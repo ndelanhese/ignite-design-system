@@ -1,14 +1,14 @@
 name: Deploy docs
 
-on: 
+on:
   push:
-    branches: 
+    branches:
       - main
 
-jobs: 
+jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -20,8 +20,8 @@ jobs:
       - run: npm ci
 
       - run: npm run build
-        env: 
-          TURBO_TOKEN: iHux1QsxwWW0FuHe9Op1h0w7
+        env:
+          TURBO_TOKEN: ${{ secrets.TURBO_CACHE_KEY }}
           TURBO_TEAM: ndelanhese
 
       - name: Deploy storybook
